@@ -1,14 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <div>
       <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
         <div className="grid grid-flow-col gap-4">
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <NavLink to='/home' className={({isActive}) =>  isActive ? 'link link-hover text-indigo-700' : 'link link-hover'}>About us</NavLink>
+          <NavLink to='/'>Contact</NavLink>
+          <NavLink to='/'>Jobs</NavLink>
+          <NavLink to='/'>Press kit</NavLink>
         </div>
         <div>
           <div className="grid grid-flow-col gap-4">
