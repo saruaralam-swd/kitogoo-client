@@ -1,11 +1,16 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { FaGoogle } from 'react-icons/fa'
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, providerLogin } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const googleProvider = new GoogleAuthProvider();
+
+  // email & password 
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +28,19 @@ const Login = () => {
       })
   };
 
+  // provider
+  const handleGoogleLogIn = () => {
+    providerLogin(googleProvider)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        navigate('/');
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  };
+
   return (
     <div className=' flex justify-center my-10'>
       <div className='space-y-3'>
@@ -33,6 +51,8 @@ const Login = () => {
           <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white'>Login</button>
         </form>
         <p> haven't any account? <Link to='/signup' className='text-blue-700 font-semibold'>Sign Up</Link>
+          <div className=' divider'>or</div>
+          <button onClick={handleGoogleLogIn} className='hover:bg-indigo-600 hover:text-white  px-4 py-1 font-semibold  duration-500 border w-full rounded-2xl flex items-center gap-2' ><FaGoogle className=' inline-block' />  sign in with Google</button>
         </p>
       </div>
     </div>
