@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import SeeReview from './SeeReview';
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -34,6 +35,8 @@ const ServiceDetails = () => {
       .then(res => res.json())
       .then(data => {
         if (data.acknowledged) {
+          const newReview = [...review, createReview];
+          setReview(newReview);
           form.reset();
           alert('Thanks for your feedback')
         }
@@ -44,10 +47,9 @@ const ServiceDetails = () => {
     fetch(`http://localhost:5000/review?id=${_id}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setReview(data)
       })
-  }, [_id])
+  }, [_id]);
 
   return (
     <div>
@@ -66,9 +68,12 @@ const ServiceDetails = () => {
       </div>
 
       <div className='border my-10 w-4/5 mx-auto'>
-        <h2>Display review </h2>
+        <h2 className='text-3xl font-semibold'>Reviews</h2>
+        <p>{review.length} review found about this service</p>
         <div>
-          <h2>This service total review {review.length}</h2>
+          {
+            review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
+          }
         </div>
       </div>
     </div>
