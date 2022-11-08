@@ -9,7 +9,6 @@ const Services = () => {
     fetch('http://localhost:5000/services')
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         const { serviceLimit } = data;
         setServices(serviceLimit);
       })
