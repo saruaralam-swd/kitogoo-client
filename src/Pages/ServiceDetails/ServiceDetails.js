@@ -15,7 +15,14 @@ const ServiceDetails = () => {
     event.preventDefault();
     const form = event.target;
     const message = form.message.value;
+
     const time = new Date().getTime();
+
+    const reviewDate = {
+      day: new Date().getDate(),
+      month: new Date().getMonth(),
+      year: new Date().getFullYear()
+    };
 
     const createReview = {
       photo: user?.photoURL,
@@ -25,6 +32,7 @@ const ServiceDetails = () => {
       serviceName: title,
       message,
       time,
+      reviewDate
     };
 
     fetch('http://localhost:5000/addReview', {

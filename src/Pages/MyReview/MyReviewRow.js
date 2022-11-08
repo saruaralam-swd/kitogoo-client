@@ -1,38 +1,47 @@
 import React from 'react';
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const MyReviewRow = ({ review }) => {
-  const { } = review;
+  const { _id, serviceName, email, photo, reviewDate, userName } = review;
+  const { day, month, year } = reviewDate;
   console.log(review);
-
 
   return (
     <tr>
-      <th>
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </th>
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+              <img src={photo} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
-            <div className="font-bold">Hart Hagerty</div>
-            <div className="text-sm opacity-50">United States</div>
+            <div className="font-bold">{serviceName}</div>
+            <div className="text-sm opacity-50">{day}/{month}/{year}</div>
           </div>
         </div>
       </td>
+
       <td>
-        Zemlak, Daniel and Leannon
+        {userName}
         <br />
-        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+        <span className="badge badge-ghost badge-sm">{email}</span>
       </td>
-      <td>Purple</td>
+
+      <td>
+        <div className='flex items-center gap-4'>
+          <p>Helpful?</p>
+          <p className='border px-2 py-1 rounded-md'>Yes {Math.floor(Math.random() * 100)}</p>
+          <p className='border px-2 py-1 rounded-md'>No {Math.floor(Math.random() * 5)}</p>
+        </div>
+      </td>
+
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <div className='flex gap-6'>
+          <Link className='text-2xl' title='edit'><FaEdit /></Link>
+          <Link className='text-2xl' title='delete'> <FaTrash /> </Link>
+        </div>
       </th>
     </tr>
   );
