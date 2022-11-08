@@ -2,11 +2,10 @@ import React from 'react';
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-const MyReviewRow = ({ review }) => {
+const MyReviewRow = ({ review , handleEdit, handleDelete}) => {
   const { _id, serviceName, email, photo, reviewDate, userName } = review;
   const { day, month, year } = reviewDate;
-  console.log(review);
-
+  
   return (
     <tr>
       <td>
@@ -39,8 +38,8 @@ const MyReviewRow = ({ review }) => {
 
       <th>
         <div className='flex gap-6'>
-          <Link className='text-2xl' title='edit'><FaEdit /></Link>
-          <Link className='text-2xl' title='delete'> <FaTrash /> </Link>
+          <Link onClick={() => handleEdit(_id)} className='text-2xl' title='edit'><FaEdit /></Link>
+          <Link onClick={() => handleDelete(_id)} className='text-2xl' title='delete'> <FaTrash /> </Link>
         </div>
       </th>
     </tr>

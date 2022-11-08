@@ -12,6 +12,29 @@ const MyReview = () => {
       .then(data => setReview(data));
   }, [user?.email])
 
+  const handleEdit = (id) => {
+    console.log(id);
+  };
+
+  const handleDelete = (id) => {
+    const permission = window.confirm('Are You Sure ? Want to delete this review');
+
+    if (permission) {
+      fetch(`http://localhost:5000/review/${id}`, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            const remaining = review.filter(rew => rew._id !== id);
+            setReview(remaining);
+            alert("Successfully delete");
+          }
+        })
+    }
+  };
+
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -27,7 +50,14 @@ const MyReview = () => {
 
           <tbody>
             {
-              review.map(rew => <MyReviewRow key={rew._id} review={rew}></MyReviewRow>)
+              review.length === 0 ?
+                <>
+                  <div className='text-center'>
+                    <h2 className='text-4xl font-semibold'>No reviews were added</h2>
+                  </div>
+                </>
+                :
+                review.map(rew => <MyReviewRow key={rew._id} review={rew} handleEdit={handleEdit} handleDelete={handleDelete}></MyReviewRow>)
             }
           </tbody>
 

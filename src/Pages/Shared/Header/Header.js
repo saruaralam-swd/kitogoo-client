@@ -16,8 +16,8 @@ const Header = () => {
   }
 
   return (
-    <div className='border-b-2'>
-      <div className="navbar bg-base-100">
+    <div className='border-b-2 sticky top-0 z-40'>
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,20 +47,21 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li><Link to='/'>Home</Link></li>
+            
 
-            {/* <li tabIndex={0}>
+            <li tabIndex={0}>
               <Link>
-                Parent
+                review
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
               </Link>
               <ul className="p-2">
-                <li><Link>Submenu 1</Link></li>
-                <li><Link>Submenu 2</Link></li>
+
               </ul>
-            </li> */}
+            </li>
 
             <li><Link to='/allServices'>services</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
+
 
           </ul>
         </div>
@@ -69,12 +70,9 @@ const Header = () => {
           {
             user?.uid ?
               <>
-                <p className='mr-3'>{user?.displayName}</p>
-                <div className='menu menu-horizontal p-0'>
-                  <li><Link to='/myReview'>My Reviews</Link></li>
-                  <li><Link to='/'>Add Service</Link></li>
-
-
+                <div className='menu menu-horizontal p-0  '>
+                  <li className=' hidden md:block'><Link to='/myReview'>My Reviews</Link></li>
+                  <li htmlFor="my-modal" className=' hidden md:block'><Link to='/addServices'>Add Service</Link></li>
                 </div>
                 <Link onClick={handleLogOut} className="bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white">Log Out</Link>
               </>
@@ -84,12 +82,6 @@ const Header = () => {
         </div>
       </div>
     </div>
-
-
-
-
-
-
   );
 };
 
