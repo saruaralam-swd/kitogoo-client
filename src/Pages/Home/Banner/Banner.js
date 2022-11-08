@@ -12,7 +12,7 @@ const Banner = () => {
           <p></p>
         </div>
 
-        <img className='w-1/2' src={img} alt="" />
+        <img className='w-1/2 shadow-lg' src={img} alt="" />
       </div>
     </div>
   );
