@@ -43,10 +43,12 @@ const Header = () => {
           </div>
           <Link className="btn btn-ghost normal-case text-xl">Kitogoo</Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li><Link to='/'>Home</Link></li>
-            <li tabIndex={0}>
+
+            {/* <li tabIndex={0}>
               <Link>
                 Parent
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
@@ -55,17 +57,26 @@ const Header = () => {
                 <li><Link>Submenu 1</Link></li>
                 <li><Link>Submenu 2</Link></li>
               </ul>
-            </li>
+            </li> */}
+
             <li><Link to='/allServices'>services</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
+
           </ul>
         </div>
+
         <div className="navbar-end">
           {
             user?.uid ?
               <>
                 <p className='mr-3'>{user?.displayName}</p>
-                <Link  onClick={handleLogOut} className="bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white">Log Out</Link>
+                <div className='menu menu-horizontal p-0'>
+                  <li><Link to='/myReview'>My Reviews</Link></li>
+                  <li><Link to='/'>Add Service</Link></li>
+
+
+                </div>
+                <Link onClick={handleLogOut} className="bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white">Log Out</Link>
               </>
               :
               <Link to='/login' className="bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white">Login</Link>

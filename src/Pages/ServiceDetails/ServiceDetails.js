@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import SeeReview from './SeeReview';
 
@@ -15,6 +15,7 @@ const ServiceDetails = () => {
     event.preventDefault();
     const form = event.target;
     const message = form.message.value;
+    const time = new Date().getTime();
 
     const createReview = {
       photo: user?.photoURL,
@@ -23,6 +24,7 @@ const ServiceDetails = () => {
       serviceId: _id,
       serviceName: title,
       message,
+      time,
     };
 
     fetch('http://localhost:5000/addReview', {
@@ -35,10 +37,10 @@ const ServiceDetails = () => {
       .then(res => res.json())
       .then(data => {
         if (data.acknowledged) {
-          const newReview = [...review, createReview];
-          setReview(newReview);
+          const newReview = [createReview, ...review];
+          // const result = newReview.sort((a, b) => b.time - a.time);
           form.reset();
-          alert('Thanks for your feedback')
+          setReview(newReview);
         }
       })
   };
@@ -47,7 +49,8 @@ const ServiceDetails = () => {
     fetch(`http://localhost:5000/review?id=${_id}`)
       .then(res => res.json())
       .then(data => {
-        setReview(data)
+        const result = data.sort((a, b) => b.time - a.time);
+        setReview(result)
       })
   }, [_id]);
 
@@ -59,27 +62,41 @@ const ServiceDetails = () => {
       </div>
 
       <div className='my-10 w-3/5 mx-auto'>
-        <form onSubmit={handleCreateReview}>
-          <h2 >Write Your review</h2>
-          <textarea name='message' className=" placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" placeholder="Your Message" required />
+        {
+          user?.uid ?
+            <>
+              <form onSubmit={handleCreateReview}>
+                <h2 >Write Your review</h2>
+                <textarea name='message' className=" placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" placeholder="Your Message" required />
 
-          <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Send</button>
-        </form>
+                <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Send</button>
+              </form>
+            </>
+            :
+            <></>
+        }
       </div>
 
       <div className='border my-10 w-4/5 mx-auto'>
         <h2 className='text-3xl font-semibold'>Reviews</h2>
-        <p>{review.length} review found about this service</p>
-        <div>
-          {
-            review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
-          }
-        </div>
+        {
+          user?.uid ?
+            <>
+              <p>{review.length} review found about this service</p>
+              <div>
+                {
+                  review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
+                }
+              </div>
+            </>
+            :
+            <>
+              <h2>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
+            </>
+        }
       </div>
     </div>
   );
 };
-
-
 
 export default ServiceDetails;
