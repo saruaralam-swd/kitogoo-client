@@ -1,3 +1,23 @@
+#  website name: Educrat
+
+Live link : []
+
+# Feature & Functionality: 
+- login 2 types of login systems (email/password, google) 
+- sign up system add
+- i am use some package (react-router-dom, firebase,  react-icons )
+- this project i am use user authentication system 
+- And have private routing feature to block unauthorize user.
+- If a user is logged in, only then a user can access this private route.
+
+
+## css libraries
+- daisyui Tailwind component library
+
+## css frameworks
+- Tailwind
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
