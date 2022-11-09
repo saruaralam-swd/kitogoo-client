@@ -33,7 +33,7 @@ const ServiceDetails = () => {
       message,
       time,
       reviewDate,
-      serviceImg : img,
+      serviceImg: img,
     };
 
     fetch('http://localhost:5000/addReview', {
@@ -86,7 +86,7 @@ const ServiceDetails = () => {
 
               <p className='font-semibold text-lg'>4.4 out of 5</p>
             </div>
-            <p>6,003 global ratings</p>
+            <p>{Math.floor(Math.random() * 1000000)} global ratings</p>
             <div>
               <progress className="progress progress-warning w-56" value="0" max="100"></progress> <br />
               <progress className="progress progress-warning w-56" value="10" max="100"></progress> <br />
@@ -129,6 +129,9 @@ const ServiceDetails = () => {
                 :
                 <>
                   <h2>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
+                  {
+                    review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
+                  }
                 </>
             }
           </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
@@ -19,7 +20,8 @@ const AddServices = () => {
       title,
       img,
       price,
-      description
+      description,
+      date: new Date().getTime()
     };
     
     fetch('http://localhost:5000/service', {
@@ -48,9 +50,9 @@ const AddServices = () => {
           <input type="number" name='price' placeholder="Service price" className="border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1" required />
         </div>
 
-        <textarea name='description' placeholder="Your Message" className="placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" required />
+        <textarea name='description' placeholder="Write your message about this" className="placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" required />
 
-        <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Add</button>
+        <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Create New Service</button>
       </form>
     </div>
   );

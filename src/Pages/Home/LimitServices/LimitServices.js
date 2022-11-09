@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Service from './LimitService';
+import LimitService from './LimitService';
 
-const Services = () => {
+const LimitServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Services = () => {
 
       <div className='grid md:grid-cols-3 gap-5'>
         {
-          services.map(ser => <Service key={ser._id} service={ser}></Service>)
+          services.map(ser => <LimitService key={ser._id} service={ser}></LimitService>)
         }
       </div>
       
@@ -31,4 +31,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default LimitServices;
