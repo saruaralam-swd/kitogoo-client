@@ -39,9 +39,9 @@ const AddServices = () => {
   };
 
   return (
-    <div className='my-10 w-3/5 mx-auto'>
-      <h2 className='text-center font-semibold text-3xl mb-5'>Add your preferred service</h2>
-      <form onSubmit={handleAddServices} className=' space-y-5'>
+    <div className='my-10 md:w-3/5 px-5 md:px-0 mx-auto'>
+      <h2 className='md:text-center font-semibold text-2xl md:text-3xl mb-5'>Add your preferred service</h2>
+      <form onSubmit={handleAddServices} className='space-y-5'>
         <div className='grid gap-5'>
           <input type="text" name='title' placeholder="Service Name" className="border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1" required />
           <input type="text" name="photoURL" placeholder="service img" className="border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1" required />

@@ -5,9 +5,9 @@ const Facility = ({ facility }) => {
 
   return (
     <div className='flex gap-4 items-start'>
-      <img src={img} alt="" />
+      <img src={img} className='w-11' alt="" />
       <div>
-        <h2 className='font-semibold text-xl text-[#12700d] md:text-center'>{title}</h2>
+        <h2 className='font-semibold text-xl text-[#12700d'>{title}</h2>
         <p className=' text-gray-500 md:text-center'>{description}</p>
       </div>
     </div>

@@ -50,7 +50,7 @@ const MyReview = () => {
   };
 
   return (
-    <div>
+    <div className='min-h-[300px]'>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -73,7 +73,7 @@ const MyReview = () => {
 
       {
         review.length === 0 ?
-          <div className='h-56  flex items-center justify-center'>
+          <div className='h-[300px]  flex items-center justify-center'>
             <h2 className='text-3xl font-semibold'>No reviews were added</h2>
           </div> :
           <></>

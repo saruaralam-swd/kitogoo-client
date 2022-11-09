@@ -31,7 +31,7 @@ const MyReviewRow = ({ review , handleEdit, handleDelete}) => {
       <td>
         <div className='flex items-center gap-4'>
           <p>Helpful?</p>
-          <p className='border px-2 py-1 rounded-md'>Yes {Math.floor(Math.random() * 100)}</p>
+          <p className='border px-2 py-1 rounded-md'>Yes {Math.floor(Math.random() * 10000)}...</p>
           <p className='border px-2 py-1 rounded-md'>No {Math.floor(Math.random() * 5)}</p>
         </div>
       </td>

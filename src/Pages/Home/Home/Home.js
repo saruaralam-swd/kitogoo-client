@@ -7,7 +7,7 @@ import useTitle from '../../../hooks/useTitle';
 const Home = () => {
   useTitle('Home')
   return (
-    <div className='bg-[#FCF7F4]'>
+    <div className=''>
       <Banner></Banner>
       <Services></Services>
       <Facilities></Facilities>
