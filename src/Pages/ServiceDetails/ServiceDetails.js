@@ -6,7 +6,7 @@ import SeeReview from './SeeReview';
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
-  const { title, _id } = service;
+  const { title, _id,} = service;
 
   const [review, setReview] = useState([]);
 
@@ -74,7 +74,7 @@ const ServiceDetails = () => {
 
       <section className='grid md:grid-cols-7 gap-10 px-5 my-10'>
         <aside className='border col-span-2'>
-          <div className=''>
+          <div>
             <h2 className='text-3xl font-semibold'>Customer reviews</h2>
             <div className='flex items-center gap-5'>
               <div className="rating  rating-sm">
@@ -96,6 +96,8 @@ const ServiceDetails = () => {
               <progress className="progress progress-warning w-56" value="100" max="100"></progress>
             </div>
           </div>
+
+
         </aside>
 
         <div className='space-y-5 col-span-4'>
@@ -103,8 +105,10 @@ const ServiceDetails = () => {
             {
               user?.uid ?
                 <>
-                  <form onSubmit={handleCreateReview} className='space-y-3'>
-                    <p className='text-lg'><span className='text-lg font-bold'>{review.length}</span> review found about this service</p>
+                  <h2 className='text-xl font-bold mb-1'>Review this product</h2>
+                  <p className='mb-1'>Share your thoughts with other customers</p>
+
+                  <form onSubmit={handleCreateReview} className='space-y-3 mt-2'>
                     <textarea name='message' className=" placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" placeholder="Write Your Message..." required />
                     <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Send</button>
                   </form>
@@ -118,7 +122,7 @@ const ServiceDetails = () => {
             {
               user?.uid ?
                 <>
-                  <p>{review.length} review found about this service</p>
+                  <p className='text-lg'><span className='text-lg font-bold'>{review.length}</span> review found about <span className='font-semibold'>{title}</span> service</p>
                   <div>
                     {
                       review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
