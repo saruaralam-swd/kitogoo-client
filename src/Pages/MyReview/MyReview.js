@@ -5,13 +5,25 @@ import MyReviewRow from './MyReviewRow';
 
 const MyReview = () => {
   useTitle('My Review')
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [review, setReview] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewByEmail?email=${user?.email}`)
-      .then(res => res.json())
-      .then(data => setReview(data));
+    fetch(`http://localhost:5000/getReviewByEmail?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('kitogoo-token')}`
+      }
+    })
+      .then(res => {
+        if (res.status === 401 || res.status === 403) {
+          logOut()       
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log('received: ', data);
+        setReview(data)
+      });
   }, [user?.email])
 
   const handleEdit = (id) => {
@@ -52,19 +64,20 @@ const MyReview = () => {
 
           <tbody>
             {
-              review.length === 0 ?
-                <>
-                  <div className='text-center'>
-                    <h2 className='text-4xl font-semibold'>No reviews were added</h2>
-                  </div>
-                </>
-                :
-                review.map(rew => <MyReviewRow key={rew._id} review={rew} handleEdit={handleEdit} handleDelete={handleDelete}></MyReviewRow>)
+              review.map(rew => <MyReviewRow key={rew._id} review={rew} handleEdit={handleEdit} handleDelete={handleDelete}></MyReviewRow>)
             }
           </tbody>
 
         </table>
       </div>
+
+      {
+        review.length === 0 ?
+          <div className='h-56  flex items-center justify-center'>
+            <h2 className='text-3xl font-semibold'>No reviews were added</h2>
+          </div> :
+          <></>
+      }
     </div>
   );
 };

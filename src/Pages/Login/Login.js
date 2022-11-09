@@ -8,10 +8,9 @@ import useTitle from '../../hooks/useTitle';
 const Login = () => {
   useTitle('Login')
   const { login, providerLogin } = useContext(AuthContext);
-  
+
   const navigate = useNavigate();
-  const location  = useLocation();
-  console.log(location);
+  const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
   const googleProvider = new GoogleAuthProvider();
@@ -26,8 +25,26 @@ const Login = () => {
     login(email, password)
       .then(result => {
         const user = result.user;
-        console.log(user);
-        navigate(from, {replace: true});
+
+        const currentUser = {
+          email: user?.email
+        }
+
+        fetch('http://localhost:5000/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            localStorage.setItem('kitogoo-token', data.token)
+          })
+
+        form.reset();
+        navigate(from, { replace: true });
       })
       .catch(error => {
         alert(error.message)
