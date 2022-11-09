@@ -5,7 +5,7 @@ const SeeReview = ({ review }) => {
 
   return (
     <div>
-      <div className='flex gap-5 border'>
+      <div className='flex gap-5 '>
         <img src={photo} title={userName} className='w-[50px] h-[50px] rounded-full' alt="" />
 
         <div>

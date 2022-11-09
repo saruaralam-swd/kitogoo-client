@@ -64,45 +64,75 @@ const ServiceDetails = () => {
 
   return (
     <div>
-      <div className='border'>
+
+      <section className='border'>
         <h2 className='text-2xl font-semibold '>{title}</h2>
         <p>here will display service details about {title} service</p>
-      </div>
+      </section>
 
-      <div className='my-10 w-3/5 mx-auto'>
-        {
-          user?.uid ?
-            <>
-              <form onSubmit={handleCreateReview}>
-                <h2 >Write Your review</h2>
-                <textarea name='message' className=" placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" placeholder="Your Message" required />
+      <div className='divider px-10'></div>
 
-                <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Send</button>
-              </form>
-            </>
-            :
-            <></>
-        }
-      </div>
-
-      <div className='border my-10 w-4/5 mx-auto'>
-        <h2 className='text-3xl font-semibold'>Reviews</h2>
-        {
-          user?.uid ?
-            <>
-              <p>{review.length} review found about this service</p>
-              <div>
-                {
-                  review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
-                }
+      <section className='grid md:grid-cols-7 gap-10 px-5 my-10'>
+        <aside className='border col-span-2'>
+          <div className=''>
+            <h2 className='text-3xl font-semibold'>Customer reviews</h2>
+            <div className='flex items-center gap-5'>
+              <div className="rating  rating-sm">
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
               </div>
-            </>
-            :
-            <>
-              <h2>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
-            </>
-        }
-      </div>
+
+              <p className='font-semibold text-lg'>4.4 out of 5</p>
+            </div>
+            <p>6,003 global ratings</p>
+            <div>
+              <progress className="progress progress-warning w-56" value="0" max="100"></progress> <br />
+              <progress className="progress progress-warning w-56" value="10" max="100"></progress> <br />
+              <progress className="progress progress-warning w-56" value="40" max="100"></progress><br />
+              <progress className="progress progress-warning w-56" value="70" max="100"></progress><br />
+              <progress className="progress progress-warning w-56" value="100" max="100"></progress>
+            </div>
+          </div>
+        </aside>
+
+        <div className='space-y-5 col-span-4'>
+          <div>
+            {
+              user?.uid ?
+                <>
+                  <form onSubmit={handleCreateReview} className='space-y-3'>
+                    <p className='text-lg'><span className='text-lg font-bold'>{review.length}</span> review found about this service</p>
+                    <textarea name='message' className=" placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" placeholder="Write Your Message..." required />
+                    <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Send</button>
+                  </form>
+                </>
+                :
+                <></>
+            }
+          </div>
+
+          <div>
+            {
+              user?.uid ?
+                <>
+                  <p>{review.length} review found about this service</p>
+                  <div>
+                    {
+                      review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
+                    }
+                  </div>
+                </>
+                :
+                <>
+                  <h2>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
+                </>
+            }
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
