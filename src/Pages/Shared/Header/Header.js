@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from '../../../assets/logo2.png';
 
@@ -27,10 +27,10 @@ const Header = () => {
             </label>
 
             {/* small device */}
-            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-300 rounded-md w-40">
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/allServices'>services</Link></li>
-              <li><Link to='/blog'>Blog</Link></li>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-md w-40">
+              <li><NavLink to='/'>Home</NavLink></li>
+              <li><NavLink to='/allServices'>services</NavLink></li>
+              <li><NavLink to='/blog'>Blog</NavLink></li>
 
               <li tabIndex={0}>
                 <Link className="justify-between">
@@ -42,9 +42,9 @@ const Header = () => {
                   <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                 </Link>
 
-                <ul className="p-2 bg-gray-400">
-                  <li className=''><Link to='/myReview'>My Reviews</Link></li>
-                  <li htmlFor="my-modal" className=''><Link to='/addServices'>Add Service</Link></li>
+                <ul className="p-2 bg-white border">
+                  <li className=''><NavLink to='/myReview'>My Reviews</NavLink></li>
+                  <li htmlFor="my-modal" className=''><NavLink to='/addServices'>Add Service</NavLink></li>
                 </ul>
               </li>
 
@@ -57,9 +57,9 @@ const Header = () => {
 
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/allServices'>services</Link></li>
-            <li><Link to='/blog'>Blog</Link></li>
+            <li><NavLink to='/home' className={({isActive}) => isActive ? "bg-white text-indigo-500" : undefined }>Home</NavLink></li>
+            <li><NavLink to='/allServices' className={({isActive}) => isActive ? "bg-white text-indigo-500" : undefined }>services</NavLink></li>
+            <li><NavLink to='/blog' className={({isActive}) => isActive ? "bg-white text-indigo-500" : undefined }>Blog</NavLink></li>
           </ul>
         </div>
 
@@ -68,7 +68,7 @@ const Header = () => {
             user?.uid ?
               <>
                 <ul className="menu menu-horizontal p-0">
-                  <p>{user?.displayName}</p>
+                  {/* <p>{user?.displayName}</p> */}
                   <li tabIndex={0} className='hidden md:block'>
 
                     <Link className='bg-white'>
