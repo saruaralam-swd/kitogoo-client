@@ -9,6 +9,7 @@ const Header = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
+        localStorage.removeItem('kitogoo-token');
         alert('log out success')
       })
       .catch(error => {
@@ -33,8 +34,8 @@ const Header = () => {
 
               <li tabIndex={0}>
                 <Link className="justify-between">
-                  <div class="avatar online ">
-                    <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <div className="avatar online ">
+                    <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                       <img src={user?.photoURL} alt='' />
                     </div>
                   </div>
@@ -51,7 +52,7 @@ const Header = () => {
             {/* small device bar3 */}
 
           </div>
-          <img src={logo} className='lg:w-2/5 md:w-2/5 w-2/3' alt="" />
+          <Link to='/'><img src={logo} className='lg:w-2/5 md:w-2/5 w-2/3' alt="" /></Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -67,11 +68,12 @@ const Header = () => {
             user?.uid ?
               <>
                 <ul className="menu menu-horizontal p-0">
+                  <p>{user?.displayName}</p>
                   <li tabIndex={0} className='hidden md:block'>
 
                     <Link className=''>
-                      <div class="avatar online ">
-                        <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <div className="avatar online ">
+                        <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                           <img src={user?.photoURL} alt='' />
                         </div>
                       </div>

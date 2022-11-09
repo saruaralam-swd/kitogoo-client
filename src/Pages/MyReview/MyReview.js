@@ -20,10 +20,7 @@ const MyReview = () => {
         }
         return res.json()
       })
-      .then(data => {
-        console.log('received: ', data);
-        setReview(data)
-      });
+      .then(data => setReview(data));
   }, [user?.email, logOut])
 
   const handleEdit = (id) => {
@@ -31,6 +28,7 @@ const MyReview = () => {
   };
 
   const handleDelete = (id) => {
+    console.log(id);
     const permission = window.confirm('Are You Sure ? Want to delete this review');
 
     if (permission) {
@@ -39,7 +37,6 @@ const MyReview = () => {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
           if (data.deletedCount > 0) {
             const remaining = review.filter(rew => rew._id !== id);
             setReview(remaining);
@@ -58,6 +55,7 @@ const MyReview = () => {
               <th>Service</th>
               <th>User Info</th>
               <th>Status</th>
+              <th>Your Review</th>
               <th>Edit/Delete</th>
             </tr>
           </thead>
@@ -69,15 +67,14 @@ const MyReview = () => {
           </tbody>
 
         </table>
-      </div>
 
-      {
-        review.length === 0 ?
+        {
+          review.length === 0 &&
           <div className='h-[300px]  flex items-center justify-center'>
             <h2 className='text-3xl font-semibold'>No reviews were added</h2>
-          </div> :
-          <></>
-      }
+          </div>
+        }
+      </div>
     </div>
   );
 };

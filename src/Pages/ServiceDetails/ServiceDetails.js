@@ -6,7 +6,7 @@ import SeeReview from './SeeReview';
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
-  const { title, _id,} = service;
+  const { title, _id, img } = service;
 
   const [review, setReview] = useState([]);
 
@@ -32,7 +32,8 @@ const ServiceDetails = () => {
       serviceName: title,
       message,
       time,
-      reviewDate
+      reviewDate,
+      serviceImg : img,
     };
 
     fetch('http://localhost:5000/addReview', {
@@ -46,7 +47,6 @@ const ServiceDetails = () => {
       .then(data => {
         if (data.acknowledged) {
           const newReview = [createReview, ...review];
-          // const result = newReview.sort((a, b) => b.time - a.time);
           form.reset();
           setReview(newReview);
         }
@@ -64,7 +64,6 @@ const ServiceDetails = () => {
 
   return (
     <div>
-
       <section className='border'>
         <h2 className='text-2xl font-semibold '>{title}</h2>
         <p>here will display service details about {title} service</p>
@@ -96,8 +95,6 @@ const ServiceDetails = () => {
               <progress className="progress progress-warning w-56" value="100" max="100"></progress>
             </div>
           </div>
-
-
         </aside>
 
         <div className='space-y-5 col-span-4'>

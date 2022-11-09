@@ -2,17 +2,17 @@ import React from 'react';
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-const MyReviewRow = ({ review , handleEdit, handleDelete}) => {
-  const { _id, serviceName, email, photo, reviewDate, userName } = review;
+const MyReviewRow = ({ review, handleEdit, handleDelete }) => {
+  const { _id, serviceName, email, reviewDate, userName, serviceImg, message } = review;
   const { day, month, year } = reviewDate;
-  
+
   return (
     <tr>
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img src={photo} alt="Avatar Tailwind CSS Component" />
+              <img src={serviceImg} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
@@ -36,12 +36,17 @@ const MyReviewRow = ({ review , handleEdit, handleDelete}) => {
         </div>
       </td>
 
-      <th>
+      <td>
+        <p>{message.length > 10 ? (message.slice(0, 10) + '...') : message}</p>
+      </td>
+
+      <td>
         <div className='flex gap-6'>
-          <Link onClick={() => handleEdit(_id)} className='text-2xl' title='edit'><FaEdit /></Link>
+          {/* <Link onClick={() => handleEdit(_id)} className='text-2xl' title='edit'><FaEdit /></Link> */}
+          <Link to={`/reviewEdit/${_id}`} className='text-2xl' title='edit'><FaEdit /></Link>
           <Link onClick={() => handleDelete(_id)} className='text-2xl' title='delete'> <FaTrash /> </Link>
         </div>
-      </th>
+      </td>
     </tr>
   );
 };

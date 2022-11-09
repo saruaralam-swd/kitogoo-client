@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const SeeReview = ({ review }) => {
   const { email, message, photo, serviceName, userName, reviewDate } = review;
   const { day, month, year } = reviewDate
-  console.log(review);
+ 
 
   return (
     <div className='my-5'>
