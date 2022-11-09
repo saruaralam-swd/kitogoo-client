@@ -16,7 +16,7 @@ const Header = () => {
   }
 
   return (
-    <div className='border-b-2 sticky top-0 z-40'>
+    <header className='border-b-2 sticky top-0 z-40'>
       <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -47,22 +47,23 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li><Link to='/'>Home</Link></li>
-            
-
-            <li tabIndex={0}>
-              <Link>
-                review
-                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-              </Link>
-              <ul className="p-2">
-
-              </ul>
-            </li>
-
             <li><Link to='/allServices'>services</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
 
-
+            {
+              user?.uid ?
+                <>
+                  <li tabIndex={0} >
+                    <Link> Profile <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg> </Link>
+                    <ul className="p-2 bg-gray-300">
+                      <li className=' hidden md:block'><Link to='/myReview'>My Reviews</Link></li>
+                      <li htmlFor="my-modal" className=' hidden md:block'><Link to='/addServices'>Add Service</Link></li>
+                    </ul>
+                  </li>
+                </>
+                :
+                <></>
+            }
           </ul>
         </div>
 
@@ -70,10 +71,24 @@ const Header = () => {
           {
             user?.uid ?
               <>
-                <div className='menu menu-horizontal p-0  '>
-                  <li className=' hidden md:block'><Link to='/myReview'>My Reviews</Link></li>
-                  <li htmlFor="my-modal" className=' hidden md:block'><Link to='/addServices'>Add Service</Link></li>
-                </div>
+                <ul className="menu menu-horizontal p-0">
+                  <li tabIndex={0} >
+                    <Link>
+                      <div class="avatar ">
+                        <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={user?.photoURL} alt='' />
+                          <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                        </div>
+                      </div>
+                      <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                    </Link>
+
+                    <ul className="p-2 bg-gray-300">
+                      <li className=' hidden md:block'><Link to='/myReview'>My Reviews</Link></li>
+                      <li htmlFor="my-modal" className=' hidden md:block'><Link to='/addServices'>Add Service</Link></li>
+                    </ul>
+                  </li>
+                </ul>
                 <Link onClick={handleLogOut} className="bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white">Log Out</Link>
               </>
               :
@@ -81,7 +96,7 @@ const Header = () => {
           }
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

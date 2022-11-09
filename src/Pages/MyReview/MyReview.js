@@ -16,7 +16,7 @@ const MyReview = () => {
     })
       .then(res => {
         if (res.status === 401 || res.status === 403) {
-          logOut()       
+          logOut()
         }
         return res.json()
       })
@@ -24,7 +24,7 @@ const MyReview = () => {
         console.log('received: ', data);
         setReview(data)
       });
-  }, [user?.email])
+  }, [user?.email, logOut])
 
   const handleEdit = (id) => {
     console.log(id);
