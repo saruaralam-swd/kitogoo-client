@@ -16,7 +16,9 @@ const LimitServices = () => {
 
   return (
     <div className='w-4/5 mx-auto my-20 space-y-5'>
-      <h2 className='text-3xl font-semibold underline'>Services</h2>
+      <h2 className='text-3xl font-semibold underline'>
+        <Link to='/allServices'>Services</Link>
+      </h2>
 
       <div className='grid md:grid-cols-3 gap-5'>
         {

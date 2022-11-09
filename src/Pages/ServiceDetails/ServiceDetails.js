@@ -6,7 +6,8 @@ import SeeReview from './SeeReview';
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
-  const { title, _id, img } = service;
+  const { title, _id, img, description, price } = service;
+  console.log(service)
 
   const [review, setReview] = useState([]);
 
@@ -64,9 +65,31 @@ const ServiceDetails = () => {
 
   return (
     <div>
-      <section className='border'>
-        <h2 className='text-2xl font-semibold '>{title}</h2>
-        <p>here will display service details about {title} service</p>
+      <section className='px-5 my-10'>
+        <div className='grid md:grid-cols-5 gap-5'>
+          <div className=' col-span-3  space-y-3'>
+            <h2 className='text-3xl font-bold'>{title}</h2>
+            <p>{description}</p>
+          </div>
+          
+          <div className=' col-span-2  rounded-md shadow-md'>
+            <img src={img} className='w-3/4 mx-auto' alt="" />
+
+            <div className='text-center space-y-2'>
+              <h2 className='font-bold text-md'>{title}</h2>
+              <div className="rating rating-sm">
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" checked />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+              </div>
+              <p className='text-gray-400'>{review.length} review</p>
+              <p className='font-bold text-2xl'>${price}</p>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       <div className='divider px-10'></div>
@@ -77,11 +100,11 @@ const ServiceDetails = () => {
             <h2 className='text-3xl font-semibold'>Customer reviews</h2>
             <div className='flex items-center gap-5'>
               <div className="rating  rating-sm">
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" checked />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
               </div>
 
               <p className='font-semibold text-lg'>4.4 out of 5</p>

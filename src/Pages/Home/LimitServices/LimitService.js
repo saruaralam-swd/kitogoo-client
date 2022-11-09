@@ -17,7 +17,6 @@ const LimitService = ({ service }) => {
 
         <p>{description.length > 100 ? (description.slice(0, 100) + '...') : description}</p>
         <Link to={`/services/${_id}`} className='inline-block'>
-          {/* <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white'>Details</button> */}
           <button className='border text-indigo-600 hover:bg-indigo-200 font-semibold px-2 py-1 rounded-md'>Sign Details</button>
         </Link>
       </div>
