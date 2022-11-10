@@ -36,7 +36,7 @@ const ServiceDetails = () => {
       serviceImg: img,
     };
 
-    fetch('http://localhost:5000/addReview', {
+    fetch('https://kitogoo-server.vercel.app/addReview', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -54,7 +54,7 @@ const ServiceDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review?id=${_id}`)
+    fetch(`https://kitogoo-server.vercel.app/review?id=${_id}`)
       .then(res => res.json())
       .then(data => {
         const result = data.sort((a, b) => b.time - a.time);

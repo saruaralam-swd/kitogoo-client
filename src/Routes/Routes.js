@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/services/:id',
-        loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
+        loader: ({params}) => fetch(`https://kitogoo-server.vercel.app/services/${params.id}`),
         element: <ServiceDetails></ServiceDetails>
       },
       {
@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/reviewEdit/:id',
-        loader: ({params}) => fetch(`http://localhost:5000/reviewEdit/${params.id}`),
+        loader: ({params}) => fetch(`https://kitogoo-server.vercel.app/reviewEdit/${params.id}`),
         element: <PrivateRoute><EditReview></EditReview></PrivateRoute>
       }
     ]

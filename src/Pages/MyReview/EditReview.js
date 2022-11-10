@@ -13,7 +13,7 @@ const EditReview = () => {
     const message = form.description.value;
     console.log(message);
 
-    fetch(`http://localhost:5000/review/${_id}`, {
+    fetch(`https://kitogoo-server.vercel.app/review/${_id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'

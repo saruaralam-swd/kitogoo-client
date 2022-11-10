@@ -4,11 +4,15 @@ import Facility from './Facility';
 
 const Facilities = () => {
   const [facilities, setFacilities] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/facilities')
+    fetch('https://kitogoo-server.vercel.app/facilities')
       .then(res => res.json())
-      .then(data => setFacilities(data))
+      .then(data => {
+        setLoading(false);
+        setFacilities(data)
+      })
   }, [])
 
   return (
@@ -19,7 +23,14 @@ const Facilities = () => {
 
       <div className='grid md:grid-cols-3 gap-3'>
         {
-          facilities.map(facility => <Facility key={facility._id} facility={facility}></Facility>)
+          loading ?
+            <>
+              <div className='flex items-center justify-center'>
+                <button className="btn btn-lg text- btn-outline border-none text-indigo-600 loading lowercase">loading...</button>
+              </div>
+            </>
+            :
+            facilities.map(facility => <Facility key={facility._id} facility={facility}></Facility>)
         }
       </div>
     </div>

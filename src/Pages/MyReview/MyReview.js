@@ -10,7 +10,7 @@ const MyReview = () => {
   const [review, setReview] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/getReviewByEmail?email=${user?.email}`, {
+    fetch(`https://kitogoo-server.vercel.app/getReviewByEmail?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('kitogoo-token')}`
       }
@@ -40,7 +40,7 @@ const MyReview = () => {
     const permission = window.confirm('Are You Sure ? Want to delete this review');
 
     if (permission) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://kitogoo-server.vercel.app/review/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

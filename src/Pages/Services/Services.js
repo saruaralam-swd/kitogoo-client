@@ -19,7 +19,7 @@ const Services = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/services')
+    fetch('https://kitogoo-server.vercel.app/services')
       .then(res => res.json())
       .then(data => {
         const { count, serviceLimit, allService } = data;

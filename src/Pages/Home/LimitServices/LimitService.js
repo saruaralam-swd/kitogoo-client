@@ -23,7 +23,7 @@ const LimitService = ({ service }) => {
         <p className='pb-12'>{description.length > 100 ? (description.slice(0, 100) + '...') : description}</p>
 
         <Link to={`/services/${_id}`} className=' block absolute bottom-2 right-2 '>
-          <button className='border text-indigo-600 hover:bg-indigo-200 font-semibold px-2 py-1 rounded-md'>Sign Details</button>
+          <button className='border text-indigo-600 hover:bg-indigo-200 font-semibold px-2 py-1 rounded-md'>view Details</button>
         </Link>
 
       </div>

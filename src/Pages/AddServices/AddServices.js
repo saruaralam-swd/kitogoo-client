@@ -21,7 +21,7 @@ const AddServices = () => {
       date: new Date().getTime()
     };
     
-    fetch('http://localhost:5000/service', {
+    fetch('https://kitogoo-server.vercel.app/service', {
       method: 'POST',
       headers: {
         'content-type' : 'application/json'
