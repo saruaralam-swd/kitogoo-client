@@ -10,7 +10,7 @@ const Service = ({ service }) => {
       <div className='bg-white flex justify-center items-center rounded-t-2xl'>
         <PhotoProvider>
           <PhotoView src={img}> 
-            <img src={img} className='h-[250px] rounded-t-2xl ' alt="" />
+            <img src={img} className='h-[250px]  rounded-t-2xl cursor-pointer' alt="" />
           </PhotoView>
         </PhotoProvider>
       </div>

@@ -5,14 +5,6 @@ import useTitle from '../../hooks/useTitle';
 import Loading from './Loading';
 import Service from './Service';
 
-/* 
-pages 
-8(count)  / 2(size) = 4 (page)
-8 / 3 = 3
-8 / 5 = 2
-
-*/
-
 const Services = () => {
   useTitle('Services')
   const [allServices, setAllServices] = useState([]);
@@ -21,8 +13,10 @@ const Services = () => {
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(2);
+
   const pages = Math.ceil(count / size);
   const ary = [...Array(pages).keys()];
+
 
   useEffect(() => {
     fetch('http://localhost:5000/services')
@@ -41,7 +35,7 @@ const Services = () => {
         {
           loading ?
             <>
-             <Loading></Loading>
+              <Loading></Loading>
             </>
             :
             allServices.map(ser => <Service key={ser._id} service={ser}></Service>)
@@ -49,18 +43,20 @@ const Services = () => {
       </div>
 
       <div>
-        {/* <p>Currently selected page: {page + 1} and size : {size}</p> */}
         <p>Currently selected page: {page + 1} and size : {size}</p>
 
         {
-          ary.map(number => <button onClick={() => setPage(number)} key={number} className={page === number ? 'border px-2 rounded-md mx-1 bg-gray-300' : 'border px-2 rounded-md mx-1'}>{number + 1}</button>)
+          ary.map(number => <button
+            onClick={() => setPage(number)}
+            key={number}
+            className={page === number ? 'border px-2 rounded-md mx-1 bg-gray-300' : 'border px-2 rounded-md mx-1'}
+          > {number + 1}</button>)
         }
 
         <select onChange={(e) => setSize(e.target.value)} className='border px-2 rounded-md '>
           <option value='2'>2</option>
           <option value='5'>5</option>
         </select>
-
       </div>
     </div>
   );

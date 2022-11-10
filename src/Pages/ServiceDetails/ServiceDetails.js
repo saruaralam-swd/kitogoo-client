@@ -30,7 +30,7 @@ const ServiceDetails = () => {
       serviceId: _id,
       serviceName: title,
       message,
-      time : new Date().getTime(),
+      time: new Date().getTime(),
       reviewDate,
       serviceImg: img,
     };
@@ -65,12 +65,12 @@ const ServiceDetails = () => {
     <div>
       <section className='px-5 my-10'>
         <div className='grid md:grid-cols-5 gap-5'>
-          <div className=' col-span-3  space-y-3'>
+          <div className=' md:col-span-3  space-y-3'>
             <h2 className='text-3xl font-bold'>{title}</h2>
             <p>{description}</p>
           </div>
-          
-          <div className=' col-span-2  rounded-md shadow-md'>
+
+          <div className=' md:col-span-2  rounded-md shadow-md'>
             <img src={img} className='w-3/4 mx-auto' alt="" />
 
             <div className='text-center space-y-2'>
@@ -93,7 +93,7 @@ const ServiceDetails = () => {
       <div className='divider px-10'></div>
 
       <section className='grid md:grid-cols-7 gap-10 px-5 my-10'>
-        <aside className='border col-span-2'>
+        <aside className='border md:col-span-2'>
           <div>
             <h2 className='text-3xl font-semibold'>Customer reviews</h2>
             <div className='flex items-center gap-5'>
@@ -118,14 +118,11 @@ const ServiceDetails = () => {
           </div>
         </aside>
 
-        <div className='space-y-5 col-span-4'>
+        <div className='space-y-5 md:col-span-4'>
           <div>
             {
               user?.uid ?
                 <>
-                  <h2 className='text-xl font-bold mb-1'>Review this product</h2>
-                  <p className='mb-1'>Share your thoughts with other customers</p>
-
                   <form onSubmit={handleCreateReview} className='space-y-3 mt-2'>
                     <textarea name='message' className=" placeholder:italic border-2 focus:outline-2 focus:outline-indigo-500  rounded-md px-4 py-1 w-full" placeholder="Write Your Message..." required />
                     <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Send</button>
@@ -149,7 +146,9 @@ const ServiceDetails = () => {
                 </>
                 :
                 <>
-                  <h2 className='text-2xl font-semibold'>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
+                  <h2 className='text-xl font-bold mb-1'>Write Your Review <Link to='/login' className='text-indigo-600'>login</Link></h2>
+                  <p className='mb-1'>Share your thoughts with other customers</p>
+
                   {
                     review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
                   }

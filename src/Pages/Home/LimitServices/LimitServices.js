@@ -15,7 +15,7 @@ const LimitServices = () => {
   }, []);
 
   return (
-    <div className='w-4/5 mx-auto my-20 space-y-5'>
+    <div className='px-5 md:px-0 md:w-4/5 mx-auto my-20 space-y-5'>
       <h2 className='text-2xl font-semibold hover:text-indigo-500 hover:underline inline-block'>
         <Link to='/allServices'>Services</Link>
       </h2>

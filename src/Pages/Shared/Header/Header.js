@@ -34,14 +34,16 @@ const Header = () => {
               <li><NavLink to='/blog'>Blog</NavLink></li>
 
               <li tabIndex={0}>
-                <Link className="justify-between">
-                  <div className="avatar online ">
-                    <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src={user?.photoURL} alt='' />
+                {
+                  user?.uid && <Link className="justify-between">
+                    <div className="avatar online ">
+                      <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src={user?.photoURL} alt='' />
+                      </div>
                     </div>
-                  </div>
-                  <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-                </Link>
+                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+                  </Link>
+                }
 
                 <ul className="p-2 bg-white border">
                   <li className=''><NavLink to='/myReview'>My Reviews</NavLink></li>
@@ -58,9 +60,9 @@ const Header = () => {
 
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <li><NavLink to='/home' className={({isActive}) => isActive ? "bg-white text-indigo-500" : undefined }>Home</NavLink></li>
-            <li><NavLink to='/allServices' className={({isActive}) => isActive ? "bg-white text-indigo-500" : undefined }>services</NavLink></li>
-            <li><NavLink to='/blog' className={({isActive}) => isActive ? "bg-white text-indigo-500" : undefined }>Blog</NavLink></li>
+            <li><NavLink to='/home' className={({ isActive }) => isActive ? "bg-white text-indigo-500" : undefined}>Home</NavLink></li>
+            <li><NavLink to='/allServices' className={({ isActive }) => isActive ? "bg-white text-indigo-500" : undefined}>services</NavLink></li>
+            <li><NavLink to='/blog' className={({ isActive }) => isActive ? "bg-white text-indigo-500" : undefined}>Blog</NavLink></li>
           </ul>
         </div>
 

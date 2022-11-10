@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Discounts = () => {
   return (
-    <div className='w-4/5 mx-auto'>
+    <div className='px-5 md:px-0 md:w-4/5 mx-auto'>
       <h2 className='text-2xl font-semibold hover:text-indigo-500 hover:underline mb-2 inline-block'>
         <Link to=''>Get Discount</Link>
       </h2>
