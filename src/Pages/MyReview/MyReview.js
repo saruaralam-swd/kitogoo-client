@@ -17,10 +17,17 @@ const MyReview = () => {
       .then(res => {
         if (res.status === 401 || res.status === 403) {
           logOut()
+          localStorage.removeItem('kitogoo-token');
         }
         return res.json()
       })
-      .then(data => setReview(data));
+      .then(data => {
+        console.log(data);
+        if (data.code === 404) {
+          return;
+        }
+        setReview(data)
+      });
   }, [user?.email, logOut])
 
   const handleEdit = (id) => {
