@@ -5,7 +5,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 const LimitService = ({ service }) => {
   const { img, title, price, description, _id } = service;
   return (
-    <div className='border rounded-t-2xl hover:ring-1 ring-indigo-500 shadow-lg'>
+    <div className='border rounded-t-2xl hover:ring-1 ring-indigo-500 shadow-lg relative'>
       <div className='bg-white flex justify-center items-center rounded-t-2xl'>
         <PhotoProvider>
           <PhotoView src={img}>
@@ -20,10 +20,12 @@ const LimitService = ({ service }) => {
           <p className='font-bold'> ${price}</p>
         </div>
 
-        <p>{description.length > 100 ? (description.slice(0, 100) + '...') : description}</p>
-        <Link to={`/services/${_id}`} className=''>
+        <p className='pb-12'>{description.length > 100 ? (description.slice(0, 100) + '...') : description}</p>
+
+        <Link to={`/services/${_id}`} className=' block absolute bottom-2 right-2 '>
           <button className='border text-indigo-600 hover:bg-indigo-200 font-semibold px-2 py-1 rounded-md'>Sign Details</button>
         </Link>
+
       </div>
     </div>
   );
