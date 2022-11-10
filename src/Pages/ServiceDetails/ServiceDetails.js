@@ -17,8 +17,6 @@ const ServiceDetails = () => {
     const form = event.target;
     const message = form.message.value;
 
-    const time = new Date().getTime();
-
     const reviewDate = {
       day: new Date().getDate(),
       month: new Date().getMonth(),
@@ -32,7 +30,7 @@ const ServiceDetails = () => {
       serviceId: _id,
       serviceName: title,
       message,
-      time,
+      time : new Date().getTime(),
       reviewDate,
       serviceImg: img,
     };

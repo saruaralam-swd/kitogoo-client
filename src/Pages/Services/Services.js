@@ -1,19 +1,66 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import Loading from './Loading';
 import Service from './Service';
+
+/* 
+pages 
+8(count)  / 2(size) = 4 (page)
+8 / 3 = 3
+8 / 5 = 2
+
+*/
 
 const Services = () => {
   useTitle('Services')
-  const allServices = useLoaderData();
-  const { allService } = allServices;
+  const [allServices, setAllServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(2);
+  const pages = Math.ceil(count / size);
+  const ary = [...Array(pages).keys()];
+
+  useEffect(() => {
+    fetch('http://localhost:5000/services')
+      .then(res => res.json())
+      .then(data => {
+        const { count, serviceLimit, allService } = data;
+        setCount(count)
+        setLoading(false)
+        setAllServices(allService)
+      })
+  }, [setLoading])
 
   return (
     <div className='md:w-4/5 px-5 md:px-0  mx-auto my-20 space-y-5'>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
         {
-          allService.map(ser => <Service key={ser._id} service={ser}></Service>)
+          loading ?
+            <>
+             <Loading></Loading>
+            </>
+            :
+            allServices.map(ser => <Service key={ser._id} service={ser}></Service>)
         }
+      </div>
+
+      <div>
+        {/* <p>Currently selected page: {page + 1} and size : {size}</p> */}
+        <p>Currently selected page: {page + 1} and size : {size}</p>
+
+        {
+          ary.map(number => <button onClick={() => setPage(number)} key={number} className={page === number ? 'border px-2 rounded-md mx-1 bg-gray-300' : 'border px-2 rounded-md mx-1'}>{number + 1}</button>)
+        }
+
+        <select onChange={(e) => setSize(e.target.value)} className='border px-2 rounded-md '>
+          <option value='2'>2</option>
+          <option value='5'>5</option>
+        </select>
+
       </div>
     </div>
   );

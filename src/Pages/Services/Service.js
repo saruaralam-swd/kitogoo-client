@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const Service = ({ service }) => {
   const { _id, img, title, price, description } = service;
@@ -7,7 +8,11 @@ const Service = ({ service }) => {
   return (
     <div className='border rounded-md hover:ring-1 ring-indigo-500 shadow-lg'>
       <div className='bg-white flex justify-center items-center rounded-t-2xl'>
-        <img src={img} className='h-[250px] rounded-t-2xl ' alt="" />
+        <PhotoProvider>
+          <PhotoView src={img}> 
+            <img src={img} className='h-[250px] rounded-t-2xl ' alt="" />
+          </PhotoView>
+        </PhotoProvider>
       </div>
 
       <div className='p-3 space-y-2'>
