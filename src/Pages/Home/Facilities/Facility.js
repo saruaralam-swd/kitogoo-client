@@ -7,7 +7,7 @@ const Facility = ({ facility }) => {
     <div className='flex gap-4 items-start'>
       <img src={img} className='w-11' alt="" />
       <div>
-        <h2 className='font-semibold text-xl text-indigo-500 hover:underline'>{title}</h2>
+        <h2 className='font-semibold text-lg text-indigo-500 hover:underline'>{title}</h2>
         <p className=' text-gray-500 '>{description}</p>
       </div>
     </div>

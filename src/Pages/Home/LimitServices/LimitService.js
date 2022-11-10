@@ -21,7 +21,7 @@ const LimitService = ({ service }) => {
         </div>
 
         <p>{description.length > 100 ? (description.slice(0, 100) + '...') : description}</p>
-        <Link to={`/services/${_id}`} className='flex justify-end'>
+        <Link to={`/services/${_id}`} className=''>
           <button className='border text-indigo-600 hover:bg-indigo-200 font-semibold px-2 py-1 rounded-md'>Sign Details</button>
         </Link>
       </div>

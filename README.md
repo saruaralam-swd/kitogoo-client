@@ -9,6 +9,8 @@ Live link : [https://kitogoo-b0158.web.app/]
 - this project i am use user authentication system 
 - And have private routing feature to block unauthorize user.
 - If a user is logged in, only then a user can access this private route.
+- user verify for get data from database (JWT)
+- dynamic title show set based on route
 
 
 ## css libraries
