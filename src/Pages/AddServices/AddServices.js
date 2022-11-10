@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
@@ -34,7 +35,7 @@ const AddServices = () => {
     .then(res => res.json())
     .then(data => {
       if (data.acknowledged) {
-        alert('service added')
+        toast.success('service added')
         form.reset();
       }
     })

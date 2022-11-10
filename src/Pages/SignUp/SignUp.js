@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { setAuthToken } from '../../Api/Auth';
@@ -27,10 +28,10 @@ const SignUp = () => {
         form.reset();
         navigate('/login')
         logOut()
-        alert('account create success. please login')
+        toast.success('account create success. please login');
       })
       .catch(error => {
-        alert(error.message);
+        toast.error(error.message);
       })
   };
 
@@ -43,7 +44,7 @@ const SignUp = () => {
     profileUpdate(profile)
       .then(() => { })
       .catch(error => {
-        alert(error.message);
+        toast.error(error.message);
       })
   }
 
@@ -57,7 +58,7 @@ const SignUp = () => {
       })
       .catch(error => {
         console.log(error.message);
-        alert(error.message)
+        toast.error(error.message)
       })
   };
 

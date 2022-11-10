@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 const EditReview = () => {
@@ -21,7 +22,7 @@ const EditReview = () => {
       .then(data => {
         console.log(data);
         if (data.acknowledged) {
-          alert('new review successfully updated')
+          toast.success('new review successfully updated');
         }
       })
   }

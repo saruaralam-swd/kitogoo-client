@@ -149,7 +149,7 @@ const ServiceDetails = () => {
                 </>
                 :
                 <>
-                  <h2>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
+                  <h2 className='text-2xl font-semibold'>Please <Link to='/login' className='text-indigo-600'>login</Link> to add a review</h2>
                   {
                     review.map(rew => <SeeReview key={rew._id} review={rew}></SeeReview>)
                   }

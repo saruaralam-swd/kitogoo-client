@@ -5,6 +5,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa'
 import useTitle from '../../hooks/useTitle';
 import { setAuthToken } from '../../Api/Auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   useTitle('Login')
@@ -31,7 +32,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch(error => {
-        alert(error.message)
+        toast.error(error.message)
       })
   };
 
@@ -45,7 +46,7 @@ const Login = () => {
       })
       .catch(error => {
         console.log(error.message);
-        alert(error.message)
+        toast.error(error.message)
       })
   };
 

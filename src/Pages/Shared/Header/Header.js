@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from '../../../assets/logo2.png';
+import toast from 'react-hot-toast';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -10,10 +11,10 @@ const Header = () => {
     logOut()
       .then(() => {
         localStorage.removeItem('kitogoo-token');
-        alert('log out success')
+        toast.success('log out success')
       })
       .catch(error => {
-        alert(error.message);
+        toast.error(error.message);
       })
   }
 

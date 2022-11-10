@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
       {
         path: '/reviewEdit/:id',
         loader: ({params}) => fetch(`http://localhost:5000/reviewEdit/${params.id}`),
-        element: <EditReview></EditReview>
+        element: <PrivateRoute><EditReview></EditReview></PrivateRoute>
       }
     ]
   },
