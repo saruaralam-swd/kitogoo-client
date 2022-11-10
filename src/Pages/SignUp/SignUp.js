@@ -1,7 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { setAuthToken } from '../../Api/Auth';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
@@ -25,6 +24,7 @@ const SignUp = () => {
     createUser(email, password)
       .then(result => {
         const user = result.user;
+        console.log(user);
         handleProfileUpdate(name, photo);
         form.reset();
         navigate('/login')

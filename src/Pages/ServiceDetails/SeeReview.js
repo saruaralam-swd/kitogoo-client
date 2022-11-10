@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SeeReview = ({ review }) => {
-  const { message, photo, userName, reviewDate, time } = review;
+  const { message, photo, userName,  time } = review;
 
   return (
     <div className='my-5'>

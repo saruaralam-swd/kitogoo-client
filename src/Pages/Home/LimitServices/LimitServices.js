@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Loading from '../../Services/Loading';
 import LimitService from './LimitService';
 
 const LimitServices = () => {

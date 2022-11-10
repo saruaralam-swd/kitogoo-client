@@ -1,7 +1,0 @@
-1. Ticket Booking
-2. Hotel Reservation
-3. Local Guide
-4. Food Services
-5. Visa Services
-6. Team Building experience
-7. Special Tour Offers

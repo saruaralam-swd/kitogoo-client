@@ -16,7 +16,7 @@ const LimitService = ({ service }) => {
 
       <div className='p-3 space-y-2'>
         <div className='flex justify-between items-center space-y-2'>
-          <h2 className='text-2xl font-semibold '>{title}</h2>
+          <h2 className='text-lg font-semibold '>{title}</h2>
           <p className='font-bold'> ${price}</p>
         </div>
 

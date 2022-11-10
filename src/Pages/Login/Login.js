@@ -2,11 +2,10 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import { FaGoogle } from 'react-icons/fa'
 import useTitle from '../../hooks/useTitle';
 import { setAuthToken } from '../../Api/Auth';
-import toast, { Toaster } from 'react-hot-toast';
 import google from '../../assets/google.webp'
+import toast from 'react-hot-toast';
 
 const Login = () => {
   useTitle('Login')

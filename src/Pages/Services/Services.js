@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import React, {  useEffect, useState } from 'react';
 import useTitle from '../../hooks/useTitle';
 import Loading from './Loading';
 import Service from './Service';
@@ -22,7 +20,7 @@ const Services = () => {
     fetch('https://kitogoo-server.vercel.app/services')
       .then(res => res.json())
       .then(data => {
-        const { count, serviceLimit, allService } = data;
+        const { count, allService } = data;
         setCount(count)
         setLoading(false)
         setAllServices(allService)
