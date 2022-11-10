@@ -5,7 +5,7 @@ import useTitle from '../../hooks/useTitle';
 import MyReviewRow from './MyReviewRow';
 
 const MyReview = () => {
-  useTitle('My Review')
+  useTitle('All Review')
   const { user, logOut } = useContext(AuthContext);
   const [review, setReview] = useState([]);
 

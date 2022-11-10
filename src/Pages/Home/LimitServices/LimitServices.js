@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Loading from '../../Services/Loading';
 import LimitService from './LimitService';
 
 const LimitServices = () => {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:5000/services')
@@ -11,6 +13,7 @@ const LimitServices = () => {
       .then(data => {
         const { serviceLimit } = data;
         setServices(serviceLimit);
+        setLoading(false)
       })
   }, []);
 
@@ -22,10 +25,17 @@ const LimitServices = () => {
 
       <div className='grid md:grid-cols-3 gap-5'>
         {
-          services.map(ser => <LimitService key={ser._id} service={ser}></LimitService>)
+          loading ?
+            <>
+              <div className='h-[200px] flex items-center justify-center'>
+                <button className="btn btn-lg text- btn-outline border-none text-indigo-600 loading lowercase">loading...</button>
+              </div>
+            </>
+            :
+            services.map(ser => <LimitService key={ser._id} service={ser}></LimitService>)
         }
       </div>
-      
+
       <div className='mx-auto text-center'>
         <Link to='/allServices'><button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md duration-500 hover:bg-indigo-700 text-white'>see all</button></Link>
       </div>

@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { setAuthToken } from '../../Api/Auth';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import google from '../../assets/google.webp'
 
 const SignUp = () => {
   useTitle('SignUp')
@@ -55,6 +56,7 @@ const SignUp = () => {
         const user = result.user;
         setAuthToken(user);
         navigate('/');
+        toast.success('login success')
       })
       .catch(error => {
         console.log(error.message);
@@ -74,7 +76,10 @@ const SignUp = () => {
           <button className='bg-indigo-600 px-4 py-1 font-semibold rounded-md hover:bg-indigo-700 text-white'>Sign Up</button>
         </form>
         <p> Already have account? <Link to='/login' className='text-blue-700 font-semibold'>Log in</Link></p>
-        <button onClick={handleGoogleLogIn} className='hover:bg-indigo-600 hover:text-white  px-4 py-1 font-semibold  duration-500 border w-full rounded-2xl flex items-center gap-2' ><FaGoogle className=' inline-block' />  sign in with Google</button>
+        <button onClick={handleGoogleLogIn} className=' px-4 py-1 font-semibold  duration-500 border w-full rounded-full hover:border-indigo-500 flex items-center gap-2' >
+          <img src={google} className='w-8' alt="" />
+          sign in with Google
+        </button>
       </div>
     </div>
   );

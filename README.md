@@ -1,6 +1,6 @@
 #  website name: Educrat
 
-Live link : []
+Live link : [https://kitogoo-b0158.web.app/]
 
 # Feature & Functionality: 
 - login 2 types of login systems (email/password, google) 

@@ -1,9 +1,11 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const EditReview = () => {
   const { message, _id, } = useLoaderData();
+  useTitle('Edit Review')
 
   const handleEditReview = (e) => {
     e.preventDefault();

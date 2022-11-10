@@ -6,6 +6,7 @@ import { FaGoogle } from 'react-icons/fa'
 import useTitle from '../../hooks/useTitle';
 import { setAuthToken } from '../../Api/Auth';
 import toast, { Toaster } from 'react-hot-toast';
+import google from '../../assets/google.webp'
 
 const Login = () => {
   useTitle('Login')
@@ -51,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <div className=' flex justify-center my-10'>
+    <div className='flex justify-center my-10'>
       <div className='space-y-3'>
         <h2 className='text-3xl font-semibold'>Login In</h2>
         <form onSubmit={handleLogIn} className='space-y-3'>
@@ -61,7 +62,11 @@ const Login = () => {
         </form>
         <p> haven't any account? <Link to='/signup' className='text-blue-700 font-semibold'>Sign Up</Link>
           <div className=' divider'>or</div>
-          <button onClick={handleGoogleLogIn} className='hover:bg-indigo-600 hover:text-white  px-4 py-1 font-semibold  duration-500 border w-full rounded-2xl flex items-center gap-2' ><FaGoogle className=' inline-block' />  sign in with Google</button>
+          <button onClick={handleGoogleLogIn} className='px-4 py-1 font-semibold  duration-500 border w-full rounded-full hover:border-indigo-500 flex items-center gap-2' >
+            {/* <FaGoogle className=' inline-block' />   */}
+            <img src={google} className='w-8' alt="" />
+            sign in with Google
+          </button>
         </p>
       </div>
     </div>
