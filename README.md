@@ -3,6 +3,9 @@
 Live link : [https://kitogoo-b0158.web.app/]
 
 # Feature & Functionality: 
+- Design is created by React JS and Tailwind CSS and Daisy Ui
+- For storing user information applied authentication and authorization using JWT. 
+- Users can create/edit/delete their reviews.
 - login 2 types of login systems (email/password, google) 
 - sign up system add
 - i am use some package (react-router-dom, firebase,  react-icons, react-photo-view, react-icons, react-hot-toast, firebase)
@@ -11,6 +14,9 @@ Live link : [https://kitogoo-b0158.web.app/]
 - If a user is logged in, only then a user can access this private route.
 - authorization system (JWT)
 - dynamic title show set based on route
+
+## Technology
+- Technology Used: MongoDB, ExpressJs, ReactJs, NodeJs, react-router-dom, Firebase, TailwindCss
 
 
 ## css libraries
